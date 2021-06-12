@@ -12,7 +12,7 @@ const DIRECTORY_GIFS = '../assets/gifs/';
 export class AppComponent implements OnInit {
   title = 'pagina-reloj';
   sonido: string = DIRECTORY_GIFS + 'gato-piano.mp3';
-  imagen: string = DIRECTORY_GIFS + 'perrito-sala.gif';
+  imagen: string = '';
   indexImage: number = 3;
   imagenes: string[] = [
     DIRECTORY_GIFS + 'terrorCat.gif',
@@ -47,7 +47,6 @@ export class AppComponent implements OnInit {
   periodos:number = 0;
   ngOnInit(): void {
     this.inicioReloj();
-    // this.reproducir();
     this.observableTimer();
   }
   
@@ -61,6 +60,7 @@ export class AppComponent implements OnInit {
 
   inicioReloj() {
     this.audio = new Audio(DIRECTORY_MP3 + 'gato-piano.mp3');
+    // this.imagen = this.imagenes[this.indexImage];
   }
 
   reloj() {
@@ -90,21 +90,12 @@ export class AppComponent implements OnInit {
       // posible cambio de imagen cada 30 min
       this.tiempo_espera = this.tiempo_espera - 1;
       if (this.tiempo_espera <= 0) {
-        this.iniciarCambioImagen();
         this.horaActual = momento;
         this.tiempo_espera = this.reseteoTiempoEspera;
+        this.verificacionHora();
+        this.iniciarPosibleSustoGato();
       }
     });
-  }
-
-  iniciarCambioImagen() {
-    let imagen = this.imagen;
-    if (Math.random() * 2 > 1.5) {
-      this.imagen = this.imagenes[0];
-      setTimeout(() => {
-        this.imagen = imagen;
-      }, 1950);
-    } 
   }
 
   reproducir() {
@@ -121,7 +112,7 @@ export class AppComponent implements OnInit {
     this.audio.pause();
   }
 
-  cambiarImagen() {
+  avanzarCambiarImagen() {
     if (this.indexImage > this.imagenes.length - 2) {
       this.indexImage = 0;
     } else {
@@ -131,7 +122,7 @@ export class AppComponent implements OnInit {
     this.imagen = this.imagenes[this.indexImage];
   }
 
-  async retrocederCambiarImagen(){
+  retrocederCambiarImagen(){
     if (this.indexImage <= 0) {
       this.indexImage = this.imagenes.length -1;
     } else {
@@ -139,6 +130,20 @@ export class AppComponent implements OnInit {
     }
     this.verificacionMusica();
     this.imagen = this.imagenes[this.indexImage];
+  }
+  
+  actualizarImagen(){
+    this.imagen = this.imagenes[this.indexImage];
+  }
+
+  iniciarPosibleSustoGato() {
+    let imagen = this.imagen;
+    if (Math.random() * 2 > 1.5) {
+      this.imagen = DIRECTORY_GIFS + 'terrorCat.gif';
+      setTimeout(() => {
+        this.imagen = imagen;
+      }, 1950);
+    } 
   }
 
   verificacionMusica(){
@@ -152,6 +157,18 @@ export class AppComponent implements OnInit {
     }else{
       this.audio = new Audio(DIRECTORY_MP3 + 'gato-piano.mp3');
       this.detener();
+    }
+  }
+
+  verificacionHora(){
+    if(this.hora.slice(0,2) === '08'){
+      this.imagen = DIRECTORY_GIFS + 'perrito-sala.gif';
+    }else if(this.hora.slice(0,2) === '10'){
+      this.imagen = DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif';
+    }else if(this.hora.slice(0,2) === '17'){
+      this.imagen = DIRECTORY_GIFS + 'atardecer-rojizo.gif';
+    }else if(this.hora.slice(0,2) === '20'){
+      this.imagen = DIRECTORY_GIFS + 'nieve-noche.gif';
     }
   }
 }

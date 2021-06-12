@@ -1,5 +1,5 @@
 <!-- <router-outlet></router-outlet> -->
-<img  style="width: '100vw'; height: '100vh'; object-fit: fit; display: 'block'; position: 'absolute'; top: '0'; right: '0'" src={{imagen}}>
+<img  style="width: '100%'; height: '100%'; object-fit: fit; display: 'block'; position: 'absolute'; top: '0'; right: '0'" src={{imagen}}>
 
       <svg class="text-light btn" (click)="playAudio()" [style.top]="2+ 'em'" [style.right]="'1.5' + 'em'" style="display: 'block'; position: 'absolute';"
       [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +10,7 @@
         <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
       </svg>
 
-    <div (click)="cambiarImagen()" class="btn" [style.top]="2*fontSize+3.7 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
+    <div (click)="avanzarCambiarImagen()" class="btn" [style.top]="2*fontSize+3.7 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
       <svg class="text-light" [style.font-size]="0.55 + 'em'"
       [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
@@ -24,6 +24,14 @@
       </svg>
     </div>
 
+    <div (click)="actualizarImagen()" class="btn" [style.top]="4*fontSize+2 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
+      <svg class="text-light" [style.font-size]="0.55 + 'em'"
+      [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+      </svg>
+    </div>
+
     <div class="text-light" [style.font-size]="fontSize + 'em'" style="display: 'block'; position: 'absolute'; top: '0em'; left: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
       {{periodos}}
     </div>
@@ -32,6 +40,6 @@
       {{hora}}
     </div>
 
-    <div class="text-light" [style.font-size]="fontSize/2 + 'em'" style="display: 'block'; position: 'absolute'; bottom: '0.4em'; right: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
+    <div class="text-light" [style.font-size]="fontSize/2 + 'em'" [style.right]="'0.75' + 'em'" style="display: 'block'; position: 'absolute'; bottom: '0.4em'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
       {{indexImage + 1}}/{{imagenes.length}}
     </div>
