@@ -10,15 +10,15 @@
         <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
       </svg>
 
-    <div (click)="cambiarImagen()" class="btn" [style.top]="2*fontSize+2 + 'em'" [style.right]="'2.4' + 'em'"  style="display: 'block'; position: 'absolute';">
-      <svg class="text-light" [style.font-size]="0.6 + 'em'"
+    <div (click)="cambiarImagen()" class="btn" [style.top]="2*fontSize+3.7 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
+      <svg class="text-light" [style.font-size]="0.55 + 'em'"
       [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
       </svg>
     </div>
     
-    <div (click)="retrocederCambiarImagen()" class="btn" [style.top]="3*fontSize+2 + 'em'" [style.right]="'2.4' + 'em'"  style="display: 'block'; position: 'absolute';">
-      <svg class="text-light" [style.font-size]="0.6 + 'em'"
+    <div (click)="retrocederCambiarImagen()" class="btn" [style.top]="3*fontSize+2 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
+      <svg class="text-light" [style.font-size]="0.55 + 'em'"
       [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
       </svg>
@@ -30,4 +30,8 @@
 
     <div class="text-light" [style.font-size]="fontSize + 'em'" style="display: 'block'; position: 'absolute'; bottom: '0em'; left: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
       {{hora}}
+    </div>
+
+    <div class="text-light" [style.font-size]="fontSize/2 + 'em'" style="display: 'block'; position: 'absolute'; bottom: '0.4em'; right: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
+      {{indexImage + 1}}/{{imagenes.length}}
     </div>

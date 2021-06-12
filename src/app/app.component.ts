@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { timer } from 'rxjs';
 
+const DIRECTORY_MP3 = '../assets//mp3/';
+const DIRECTORY_GIFS = '../assets/gifs/';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,25 +11,33 @@ import { timer } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'pagina-reloj';
-  sonido: string = '../assets/Grabación.mp3';
-  imagen: string = '../assets/perrito-sala.gif';
-  indexImage: number = 1;
+  sonido: string = DIRECTORY_GIFS + 'gato-piano.mp3';
+  imagen: string = DIRECTORY_GIFS + 'perrito-sala.gif';
+  indexImage: number = 3;
   imagenes: string[] = [
-    '../assets/terrorCat.gif',
-    '../assets/perrito-sala.gif',
-    '../assets/hojas-ciruelo-cayendo.gif',
-    '../assets/lluvia-pez.gif',
-    '../assets/market-nocturno.gif',
-    '../assets/snake.gif',
-    '../assets/gatoTenor.gif',
-    '../assets/mario.28e65fd9.gif',
-    '../assets/matrix.8400ed0c.gif',
-    '../assets/star-wars.303295a3.gif',
-    '../assets/street-fighter.cd23183b.gif',
-    '../assets/witcher.ba4e5f6c.gif',
+    DIRECTORY_GIFS + 'terrorCat.gif',
+    DIRECTORY_GIFS + 'gatoTenor.gif',
+    DIRECTORY_GIFS + 'nian-cat.gif',
+    DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif',
+    DIRECTORY_GIFS + 'lluvia-pez.gif',
+    DIRECTORY_GIFS + 'perrito-sala.gif',
+    DIRECTORY_GIFS + 'puerto-mañana.gif',
+    DIRECTORY_GIFS + 'lluvioso-con-sapo.gif',
+    DIRECTORY_GIFS + 'atardecer-rojizo.gif',
+    DIRECTORY_GIFS + 'nieve-noche.gif',
+    DIRECTORY_GIFS + 'gato-tele.gif',
+    DIRECTORY_GIFS + 'market-nocturno.gif',
+    DIRECTORY_GIFS + 'bar-noche.gif',
+    DIRECTORY_GIFS + 'noche-apagon-luz.gif',
+    DIRECTORY_GIFS + 'witcher.ba4e5f6c.gif',
+    DIRECTORY_GIFS + 'mario.28e65fd9.gif',
+    DIRECTORY_GIFS + 'star-wars.303295a3.gif',
+    DIRECTORY_GIFS + 'street-fighter.cd23183b.gif',
+    DIRECTORY_GIFS + 'matrix-hacker.gif',
+    DIRECTORY_GIFS + 'snake.gif',
   ];
   hora: string = '00 : 00 : 00';
-  audio = new Audio('../assets/Grabación.mp3');
+  audio:any;
 
   reseteoTiempoEspera: number = 1800;
   tiempo_espera: number = 1;
@@ -49,9 +60,7 @@ export class AppComponent implements OnInit {
   }
 
   inicioReloj() {
-    setInterval(() => {
-      this.reloj();
-    }, 1000);
+    this.audio = new Audio(DIRECTORY_MP3 + 'gato-piano.mp3');
   }
 
   reloj() {
@@ -68,13 +77,18 @@ export class AppComponent implements OnInit {
   observableTimer() {
     const source = timer(1000, 1000);
     const abc = source.subscribe((val) => {
-      this.tiempo_espera = this.tiempo_espera - 1;
+      // eventos que ocurren cada segundo
+      this.reloj();
       this.ajustarPantalla();
       let momento = new Date();
+
       // periodos de 30 minutos;
       if((momento.getMinutes() === 0 && momento.getSeconds() === 0)|| (momento.getMinutes() === 30 && momento.getSeconds() === 0)){
         this.periodos += 1; 
       }
+
+      // posible cambio de imagen cada 30 min
+      this.tiempo_espera = this.tiempo_espera - 1;
       if (this.tiempo_espera <= 0) {
         this.iniciarCambioImagen();
         this.horaActual = momento;
@@ -113,15 +127,31 @@ export class AppComponent implements OnInit {
     } else {
       this.indexImage += 1;
     }
+    this.verificacionMusica();
     this.imagen = this.imagenes[this.indexImage];
   }
 
-  retrocederCambiarImagen(){
+  async retrocederCambiarImagen(){
     if (this.indexImage <= 0) {
       this.indexImage = this.imagenes.length -1;
     } else {
       this.indexImage -= 1;
     }
+    this.verificacionMusica();
     this.imagen = this.imagenes[this.indexImage];
+  }
+
+  verificacionMusica(){
+    this.detener();
+    if(this.imagenes[this.indexImage] === DIRECTORY_GIFS + 'nian-cat.gif'){
+      this.audio = new Audio(DIRECTORY_MP3 + 'nyan-cat.m4a');
+      this.reproducir();
+    }else if(this.imagenes[this.indexImage] === DIRECTORY_GIFS + 'gatoTenor.gif'){
+      this.audio = new Audio(DIRECTORY_MP3 + 'gato-piano.mp3');
+      this.reproducir();
+    }else{
+      this.audio = new Audio(DIRECTORY_MP3 + 'gato-piano.mp3');
+      this.detener();
+    }
   }
 }
