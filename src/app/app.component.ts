@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
     DIRECTORY_GIFS + 'lluvia-pez.gif',
     DIRECTORY_GIFS + 'perrito-sala.gif',
     DIRECTORY_GIFS + 'puerto-mañana.gif',
+    DIRECTORY_GIFS + 'michael-dwait.gif',
     DIRECTORY_GIFS + 'waifu-atsui.gif',
     DIRECTORY_GIFS + 'waifus-comiendo-carne.gif',
     DIRECTORY_GIFS + 'lluvioso-con-sapo.gif',
@@ -171,7 +172,7 @@ export class AppComponent implements OnInit {
     }else if(this.hora === '10 : 00 : 00'){
       this.imagen = DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif';
     }else if(this.hora === '12 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'waifu-atsui.gif';
+      this.imagen = DIRECTORY_GIFS + 'michael-dwait.gif';
     }else if(this.hora === '13 : 00 : 00'){
       this.imagen = DIRECTORY_GIFS + 'waifus-comiendo-carne.gif';
     }else if(this.hora === '14 : 00 : 00'){
