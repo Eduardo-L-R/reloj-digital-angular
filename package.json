@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "start2": "ng serve --port 4300",
+    "start": "ng serve --port 4300",
+    "start2": "ng serve --port 80 --host 192.168.1.8 --disable-host-check",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "add:bootstrap": "ng add bootstrap",
-    "build:qa": "ng build --configuration=production"
+    "build:qa": "ng build --configuration=production --base-href /reloj/",
+    "build:prod": "ng build --prod --base-href /reloj/"
   },
   "private": true,
   "dependencies": {

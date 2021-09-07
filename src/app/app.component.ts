@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { timer } from 'rxjs';
 
-const DIRECTORY_MP3 = '../assets//mp3/';
-const DIRECTORY_GIFS = '../assets/gifs/';
+const DIRECTORY_MP3 = './assets/mp3/';
+const DIRECTORY_GIFS = './assets/gifs/';
 
 @Component({
   selector: 'app-root',
@@ -23,8 +23,10 @@ export class AppComponent implements OnInit {
     DIRECTORY_GIFS + 'perrito-sala.gif',
     DIRECTORY_GIFS + 'puerto-mañana.gif',
     DIRECTORY_GIFS + 'michael-dwait.gif',
-    DIRECTORY_GIFS + 'waifu-atsui.gif',
-    DIRECTORY_GIFS + 'waifus-comiendo-carne.gif',
+    // DIRECTORY_GIFS + 'lluvia-pez.gif',
+    // DIRECTORY_GIFS + 'lluvia-pez.gif',
+    // DIRECTORY_GIFS + 'waifu-atsui.gif',
+    // DIRECTORY_GIFS + 'waifus-comiendo-carne.gif',
     DIRECTORY_GIFS + 'lluvioso-con-sapo.gif',
     DIRECTORY_GIFS + 'roboto-fotografo.gif',
     DIRECTORY_GIFS + 'atardecer-rojizo.gif',
@@ -33,7 +35,8 @@ export class AppComponent implements OnInit {
     DIRECTORY_GIFS + 'market-nocturno.gif',
     DIRECTORY_GIFS + 'bar-noche.gif',
     DIRECTORY_GIFS + 'noche-apagon-luz.gif',
-    DIRECTORY_GIFS + 'duende-noche.gif',
+    // DIRECTORY_GIFS + 'gato-tele.gif',
+    // DIRECTORY_GIFS + 'duende-noche.gif',
     DIRECTORY_GIFS + 'witcher.ba4e5f6c.gif',
     DIRECTORY_GIFS + 'mario.28e65fd9.gif',
     DIRECTORY_GIFS + 'star-wars.303295a3.gif',
@@ -54,7 +57,7 @@ export class AppComponent implements OnInit {
     this.inicioReloj();
     this.observableTimer();
   }
-  
+
   ajustarPantalla(){
     if(window.innerWidth > 1100){this.fontSize = 10}
     else if(window.innerWidth > 900){this.fontSize = 9}
@@ -89,7 +92,7 @@ export class AppComponent implements OnInit {
 
       // periodos de 30 minutos;
       if((momento.getMinutes() === 0 && momento.getSeconds() === 0)|| (momento.getMinutes() === 30 && momento.getSeconds() === 0)){
-        this.periodos += 1; 
+        this.periodos += 1;
       }
 
       // posible cambio de imagen cada 30 min
@@ -98,7 +101,7 @@ export class AppComponent implements OnInit {
       if (this.tiempo_espera <= 0) {
         this.horaActual = momento;
         this.tiempo_espera = this.reseteoTiempoEspera;
-        this.iniciarPosibleSustoGato();
+        // this.iniciarPosibleSustoGato();
       }
     });
   }
@@ -136,7 +139,7 @@ export class AppComponent implements OnInit {
     this.verificacionMusica();
     this.imagen = this.imagenes[this.indexImage];
   }
-  
+
   actualizarImagen(){
     this.imagen = this.imagenes[this.indexImage];
   }
@@ -148,7 +151,7 @@ export class AppComponent implements OnInit {
       setTimeout(() => {
         this.imagen = imagen;
       }, 1950);
-    } 
+    }
   }
 
   verificacionMusica(){
@@ -173,16 +176,16 @@ export class AppComponent implements OnInit {
       this.imagen = DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif';
     }else if(this.hora === '12 : 00 : 00'){
       this.imagen = DIRECTORY_GIFS + 'michael-dwait.gif';
-    }else if(this.hora === '13 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'waifus-comiendo-carne.gif';
+    // }else if(this.hora === '13 : 00 : 00'){
+    //   this.imagen = DIRECTORY_GIFS + 'waifus-comiendo-carne.gif';
     }else if(this.hora === '14 : 00 : 00'){
       this.imagen = DIRECTORY_GIFS + 'roboto-fotografo.gif';
     }else if(this.hora === '18 : 00 : 00'){
       this.imagen = DIRECTORY_GIFS + 'atardecer-rojizo.gif';
     }else if(this.hora === '20 : 00 : 00'){
       this.imagen = DIRECTORY_GIFS + 'nieve-noche.gif';
-    }else if(this.hora === '00 : 00 : 01'){
-      this.imagen = DIRECTORY_GIFS + 'duende-noche.gif';
+    // }else if(this.hora === '00 : 00 : 01'){
+    //   this.imagen = DIRECTORY_GIFS + 'duende-noche.gif';
     }else{
       if(this.imagen === ''){
         this.imagen = this.imagenes[this.indexImage];
