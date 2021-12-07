@@ -10,6 +10,7 @@ const DIRECTORY_GIFS = './assets/gifs/';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
   title = 'pagina-reloj';
   sonido: string = DIRECTORY_GIFS + 'gato-piano.mp3';
   imagen: string = '';
@@ -53,6 +54,8 @@ export class AppComponent implements OnInit {
   fontSize:number = 10;
 
   periodos:number = 0;
+  fullscreen: boolean = false;
+
   ngOnInit(): void {
     this.inicioReloj();
     this.observableTimer();
@@ -191,5 +194,31 @@ export class AppComponent implements OnInit {
         this.imagen = this.imagenes[this.indexImage];
       }
     }
+  }
+
+  fullScreen(){
+    let elem:any = document.getElementById("myvideo");
+    if (elem.requestFullscreen && this.fullscreen=== false) {
+      elem.requestFullscreen();
+      this.fullscreen= true;
+    } else if (elem.webkitRequestFullscreen && this.fullscreen=== false) { /* Safari */
+      elem.webkitRequestFullscreen();
+      this.fullscreen= true;
+    } else if (elem.msRequestFullscreen && this.fullscreen=== false) { /* IE11 */
+      elem.msRequestFullscreen();
+      this.fullscreen= true;
+    }else{
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        this.fullscreen= false;
+      // } else if (document.webkitExitFullscreen) { /* Safari */
+      //   document.webkitExitFullscreen();
+      //   this.fullscreen= false;
+      // } else if (document.msExitFullscreen) { /* IE11 */
+      //   document.msExitFullscreen();
+      //   this.fullscreen= false;
+      }
+    }
+
   }
 }
