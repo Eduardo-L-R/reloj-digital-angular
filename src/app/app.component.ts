@@ -46,6 +46,16 @@ export class AppComponent implements OnInit {
     DIRECTORY_GIFS + 'snake.gif',
   ];
   hora: string = '00 : 00 : 00';
+  cronometro:any = {
+    text : '00 : 00 : 00',
+    seconds: 0,
+    status: false,
+  }
+  cronometro2:any = {
+    text : '00 : 00 : 00',
+    seconds: 0,
+    status: false,
+  }
   audio:any;
 
   reseteoTiempoEspera: number = 1800;
@@ -91,6 +101,26 @@ export class AppComponent implements OnInit {
       // eventos que ocurren cada segundo
       this.reloj();
       this.ajustarPantalla();
+      if(this.cronometro.status === true){
+        this.cronometro.seconds += 1;
+        let horas = Math.floor(this.cronometro.seconds / 3600);
+        let minutos = Math.floor(this.cronometro.seconds / 60) - horas * 60;
+        let segundos = this.cronometro.seconds - horas * 3600 - minutos * 60 ;
+        // console.log(this.cronometro.seconds);
+        // console.log(this.cronometro.seconds / 3600);
+        // console.log(Math.floor(this.cronometro.seconds / 3600));
+        this.cronometro.text = `${("0" + String(horas)).slice(-2)} : ${("0" + String(minutos)).slice(-2)} : ${("0" + String(segundos)).slice(-2)}`
+      }
+      if(this.cronometro2.status === true){
+        this.cronometro2.seconds += 1;
+        let horas2 = Math.floor(this.cronometro2.seconds / 3600);
+        let minutos2 = Math.floor(this.cronometro2.seconds / 60) - horas2 * 60;
+        let segundos2 = this.cronometro2.seconds - horas2 * 3600 - minutos2 * 60 ;
+        // console.log(this.cronometro.seconds);
+        // console.log(this.cronometro.seconds / 3600);
+        // console.log(Math.floor(this.cronometro.seconds / 3600));
+        this.cronometro2.text = `${("0" + String(horas2)).slice(-2)} : ${("0" + String(minutos2)).slice(-2)} : ${("0" + String(segundos2)).slice(-2)}`
+      }
       let momento = new Date();
 
       // periodos de 30 minutos;
@@ -123,6 +153,34 @@ export class AppComponent implements OnInit {
     this.audio.pause();
   }
 
+  inicioCronometro() {
+    this.cronometro.status = true
+  }
+
+  detenerCronometro() {
+    this.cronometro.status = false
+  }
+
+  reiniciarCronometro() {
+    this.cronometro.status = false;
+    this.cronometro.seconds = 0;
+    this.cronometro.text = '00 : 00 : 00';
+  }
+
+  inicioCronometro2() {
+    this.cronometro2.status = true
+  }
+
+  detenerCronometro2() {
+    this.cronometro2.status = false
+  }
+
+  reiniciarCronometro2() {
+    this.cronometro2.status = false;
+    this.cronometro2.seconds = 0;
+    this.cronometro2.text = '00 : 00 : 00';
+  }
+
   avanzarCambiarImagen() {
     if (this.indexImage > this.imagenes.length - 2) {
       this.indexImage = 0;
@@ -148,13 +206,13 @@ export class AppComponent implements OnInit {
   }
 
   iniciarPosibleSustoGato() {
-    let imagen = this.imagen;
-    if (Math.random() * 2 > 1.5) {
-      this.imagen = DIRECTORY_GIFS + 'terrorCat.gif';
-      setTimeout(() => {
-        this.imagen = imagen;
-      }, 1950);
-    }
+    // let imagen = this.imagen;
+    // if (Math.random() * 2 > 1.5) {
+    //   this.imagen = DIRECTORY_GIFS + 'terrorCat.gif';
+    //   setTimeout(() => {
+    //     this.imagen = imagen;
+    //   }, 1950);
+    // }
   }
 
   verificacionMusica(){
@@ -172,28 +230,28 @@ export class AppComponent implements OnInit {
   }
 
   verificacionHora(){
-    console.log(this.hora);
-    if(this.hora === '08 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'perrito-sala.gif';
-    }else if(this.hora === '10 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif';
-    }else if(this.hora === '12 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'michael-dwait.gif';
-    // }else if(this.hora === '13 : 00 : 00'){
-    //   this.imagen = DIRECTORY_GIFS + 'waifus-comiendo-carne.gif';
-    }else if(this.hora === '14 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'roboto-fotografo.gif';
-    }else if(this.hora === '18 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'atardecer-rojizo.gif';
-    }else if(this.hora === '20 : 00 : 00'){
-      this.imagen = DIRECTORY_GIFS + 'nieve-noche.gif';
-    // }else if(this.hora === '00 : 00 : 01'){
-    //   this.imagen = DIRECTORY_GIFS + 'duende-noche.gif';
-    }else{
+    // console.log(this.hora);
+    // if(this.hora === '08 : 00 : 00'){
+    //   this.imagen = DIRECTORY_GIFS + 'perrito-sala.gif';
+    // }else if(this.hora === '10 : 00 : 00'){
+    //   this.imagen = DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif';
+    // }else if(this.hora === '12 : 00 : 00'){
+    //   this.imagen = DIRECTORY_GIFS + 'michael-dwait.gif';
+    // // }else if(this.hora === '13 : 00 : 00'){
+    // //   this.imagen = DIRECTORY_GIFS + 'waifus-comiendo-carne.gif';
+    // }else if(this.hora === '14 : 00 : 00'){
+    //   this.imagen = DIRECTORY_GIFS + 'roboto-fotografo.gif';
+    // }else if(this.hora === '18 : 00 : 00'){
+    //   this.imagen = DIRECTORY_GIFS + 'atardecer-rojizo.gif';
+    // }else if(this.hora === '20 : 00 : 00'){
+    //   this.imagen = DIRECTORY_GIFS + 'nieve-noche.gif';
+    // // }else if(this.hora === '00 : 00 : 01'){
+    // //   this.imagen = DIRECTORY_GIFS + 'duende-noche.gif';
+    // }else{
       if(this.imagen === ''){
         this.imagen = this.imagenes[this.indexImage];
       }
-    }
+    // }
   }
 
   fullScreen(){
