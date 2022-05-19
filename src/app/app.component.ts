@@ -10,7 +10,6 @@ const DIRECTORY_GIFS = './assets/gifs/';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
   title = 'pagina-reloj';
   sonido: string = DIRECTORY_GIFS + 'gato-piano.mp3';
   imagen: string = '';
@@ -19,8 +18,8 @@ export class AppComponent implements OnInit {
     DIRECTORY_GIFS + 'terrorCat.gif',
     DIRECTORY_GIFS + 'gatoTenor.gif',
     DIRECTORY_GIFS + 'nian-cat.gif',
-    DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif',
     DIRECTORY_GIFS + 'lluvia-pez.gif',
+    DIRECTORY_GIFS + 'hojas-ciruelo-cayendo.gif',
     DIRECTORY_GIFS + 'perrito-sala.gif',
     DIRECTORY_GIFS + 'puerto-mañana.gif',
     DIRECTORY_GIFS + 'michael-dwait.gif',
@@ -46,24 +45,24 @@ export class AppComponent implements OnInit {
     DIRECTORY_GIFS + 'snake.gif',
   ];
   hora: string = '00 : 00 : 00';
-  cronometro:any = {
-    text : '00 : 00 : 00',
+  cronometro: any = {
+    text: '00 : 00 : 00',
     seconds: 0,
     status: false,
-  }
-  cronometro2:any = {
-    text : '00 : 00 : 00',
+  };
+  cronometro2: any = {
+    text: '00 : 00 : 00',
     seconds: 0,
     status: false,
-  }
-  audio:any;
+  };
+  audio: any;
 
   reseteoTiempoEspera: number = 1800;
   tiempo_espera: number = 1;
   horaActual: Date = new Date();
-  fontSize:number = 10;
+  fontSize: number = 10;
 
-  periodos:number = 0;
+  periodos: number = 0;
   fullscreen: boolean = false;
 
   ngOnInit(): void {
@@ -71,12 +70,18 @@ export class AppComponent implements OnInit {
     this.observableTimer();
   }
 
-  ajustarPantalla(){
-    if(window.innerWidth > 1100){this.fontSize = 10}
-    else if(window.innerWidth > 900){this.fontSize = 9}
-    else if(window.innerWidth > 700){this.fontSize = 7}
-    else if(window.innerWidth > 500){this.fontSize = 5}
-    else {this.fontSize = 4}
+  ajustarPantalla() {
+    if (window.innerWidth > 1100) {
+      this.fontSize = 80;
+    } else if (window.innerWidth > 900) {
+      this.fontSize = 50;
+    } else if (window.innerWidth > 700) {
+      this.fontSize = 7;
+    } else if (window.innerWidth > 500) {
+      this.fontSize = 5;
+    } else {
+      this.fontSize = 4;
+    }
   }
 
   inicioReloj() {
@@ -101,30 +106,38 @@ export class AppComponent implements OnInit {
       // eventos que ocurren cada segundo
       this.reloj();
       this.ajustarPantalla();
-      if(this.cronometro.status === true){
+      if (this.cronometro.status === true) {
         this.cronometro.seconds += 1;
         let horas = Math.floor(this.cronometro.seconds / 3600);
         let minutos = Math.floor(this.cronometro.seconds / 60) - horas * 60;
-        let segundos = this.cronometro.seconds - horas * 3600 - minutos * 60 ;
+        let segundos = this.cronometro.seconds - horas * 3600 - minutos * 60;
         // console.log(this.cronometro.seconds);
         // console.log(this.cronometro.seconds / 3600);
         // console.log(Math.floor(this.cronometro.seconds / 3600));
-        this.cronometro.text = `${("0" + String(horas)).slice(-2)} : ${("0" + String(minutos)).slice(-2)} : ${("0" + String(segundos)).slice(-2)}`
+        this.cronometro.text = `${('0' + String(horas)).slice(-2)} : ${(
+          '0' + String(minutos)
+        ).slice(-2)} : ${('0' + String(segundos)).slice(-2)}`;
       }
-      if(this.cronometro2.status === true){
+      if (this.cronometro2.status === true) {
         this.cronometro2.seconds += 1;
         let horas2 = Math.floor(this.cronometro2.seconds / 3600);
         let minutos2 = Math.floor(this.cronometro2.seconds / 60) - horas2 * 60;
-        let segundos2 = this.cronometro2.seconds - horas2 * 3600 - minutos2 * 60 ;
+        let segundos2 =
+          this.cronometro2.seconds - horas2 * 3600 - minutos2 * 60;
         // console.log(this.cronometro.seconds);
         // console.log(this.cronometro.seconds / 3600);
         // console.log(Math.floor(this.cronometro.seconds / 3600));
-        this.cronometro2.text = `${("0" + String(horas2)).slice(-2)} : ${("0" + String(minutos2)).slice(-2)} : ${("0" + String(segundos2)).slice(-2)}`
+        this.cronometro2.text = `${('0' + String(horas2)).slice(-2)} : ${(
+          '0' + String(minutos2)
+        ).slice(-2)} : ${('0' + String(segundos2)).slice(-2)}`;
       }
       let momento = new Date();
 
       // periodos de 30 minutos;
-      if((momento.getMinutes() === 0 && momento.getSeconds() === 0)|| (momento.getMinutes() === 30 && momento.getSeconds() === 0)){
+      if (
+        (momento.getMinutes() === 0 && momento.getSeconds() === 0) ||
+        (momento.getMinutes() === 30 && momento.getSeconds() === 0)
+      ) {
         this.periodos += 1;
       }
 
@@ -154,11 +167,11 @@ export class AppComponent implements OnInit {
   }
 
   inicioCronometro() {
-    this.cronometro.status = true
+    this.cronometro.status = true;
   }
 
   detenerCronometro() {
-    this.cronometro.status = false
+    this.cronometro.status = false;
   }
 
   reiniciarCronometro() {
@@ -168,11 +181,11 @@ export class AppComponent implements OnInit {
   }
 
   inicioCronometro2() {
-    this.cronometro2.status = true
+    this.cronometro2.status = true;
   }
 
   detenerCronometro2() {
-    this.cronometro2.status = false
+    this.cronometro2.status = false;
   }
 
   reiniciarCronometro2() {
@@ -191,9 +204,9 @@ export class AppComponent implements OnInit {
     this.imagen = this.imagenes[this.indexImage];
   }
 
-  retrocederCambiarImagen(){
+  retrocederCambiarImagen() {
     if (this.indexImage <= 0) {
-      this.indexImage = this.imagenes.length -1;
+      this.indexImage = this.imagenes.length - 1;
     } else {
       this.indexImage -= 1;
     }
@@ -201,7 +214,7 @@ export class AppComponent implements OnInit {
     this.imagen = this.imagenes[this.indexImage];
   }
 
-  actualizarImagen(){
+  actualizarImagen() {
     this.imagen = this.imagenes[this.indexImage];
   }
 
@@ -215,21 +228,24 @@ export class AppComponent implements OnInit {
     // }
   }
 
-  verificacionMusica(){
+  verificacionMusica() {
     this.detener();
-    if(this.imagenes[this.indexImage] === DIRECTORY_GIFS + 'nian-cat.gif'){
+    if (this.imagenes[this.indexImage] === DIRECTORY_GIFS + 'nian-cat.gif') {
       this.audio = new Audio(DIRECTORY_MP3 + 'nyan-cat.m4a');
       this.reproducir();
-    }else if(this.imagenes[this.indexImage] === DIRECTORY_GIFS + 'gatoTenor.gif'){
+    } else if (
+      this.imagenes[this.indexImage] ===
+      DIRECTORY_GIFS + 'gatoTenor.gif'
+    ) {
       this.audio = new Audio(DIRECTORY_MP3 + 'gato-piano.mp3');
       this.reproducir();
-    }else{
+    } else {
       this.audio = new Audio(DIRECTORY_MP3 + 'gato-piano.mp3');
       this.detener();
     }
   }
 
-  verificacionHora(){
+  verificacionHora() {
     // console.log(this.hora);
     // if(this.hora === '08 : 00 : 00'){
     //   this.imagen = DIRECTORY_GIFS + 'perrito-sala.gif';
@@ -248,35 +264,36 @@ export class AppComponent implements OnInit {
     // // }else if(this.hora === '00 : 00 : 01'){
     // //   this.imagen = DIRECTORY_GIFS + 'duende-noche.gif';
     // }else{
-      if(this.imagen === ''){
-        this.imagen = this.imagenes[this.indexImage];
-      }
+    if (this.imagen === '') {
+      this.imagen = this.imagenes[this.indexImage];
+    }
     // }
   }
 
-  fullScreen(){
-    let elem:any = document.getElementById("myvideo");
-    if (elem.requestFullscreen && this.fullscreen=== false) {
+  fullScreen() {
+    let elem: any = document.getElementById('myvideo');
+    if (elem.requestFullscreen && this.fullscreen === false) {
       elem.requestFullscreen();
-      this.fullscreen= true;
-    } else if (elem.webkitRequestFullscreen && this.fullscreen=== false) { /* Safari */
+      this.fullscreen = true;
+    } else if (elem.webkitRequestFullscreen && this.fullscreen === false) {
+      /* Safari */
       elem.webkitRequestFullscreen();
-      this.fullscreen= true;
-    } else if (elem.msRequestFullscreen && this.fullscreen=== false) { /* IE11 */
+      this.fullscreen = true;
+    } else if (elem.msRequestFullscreen && this.fullscreen === false) {
+      /* IE11 */
       elem.msRequestFullscreen();
-      this.fullscreen= true;
-    }else{
+      this.fullscreen = true;
+    } else {
       if (document.exitFullscreen) {
         document.exitFullscreen();
-        this.fullscreen= false;
-      // } else if (document.webkitExitFullscreen) { /* Safari */
-      //   document.webkitExitFullscreen();
-      //   this.fullscreen= false;
-      // } else if (document.msExitFullscreen) { /* IE11 */
-      //   document.msExitFullscreen();
-      //   this.fullscreen= false;
+        this.fullscreen = false;
+        // } else if (document.webkitExitFullscreen) { /* Safari */
+        //   document.webkitExitFullscreen();
+        //   this.fullscreen= false;
+        // } else if (document.msExitFullscreen) { /* IE11 */
+        //   document.msExitFullscreen();
+        //   this.fullscreen= false;
       }
     }
-
   }
 }

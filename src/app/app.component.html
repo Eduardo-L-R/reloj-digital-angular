@@ -1,44 +1,137 @@
 <!-- <router-outlet></router-outlet> -->
 <div id="myvideo">
-<img  style="width: '100%'; height: '100%'; object-fit: fit; display: 'block'; position: 'absolute'; top: '0'; right: '0'" src={{imagen}}>
+  <img
+    style="
+      width: '100%';
+      height: '100%';
+      object-fit: fit;
+      display: 'block';
+      position: 'absolute';
+      top: '0';
+      right: '0';
+    "
+    src="{{ imagen }}"
+  />
 
-      <!-- <svg class="text-light btn" (click)="playAudio()" [style.top]="2+ 'em'" [style.right]="'1.5' + 'em'" style="display: 'block'; position: 'absolute';"
+  <!-- <svg class="text-light btn" (click)="playAudio()" [style.top]="2+ 'em'" [style.right]="'1.5' + 'em'" style="display: 'block'; position: 'absolute';"
       [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z" /></svg> -->
 
-        <svg class="text-light btn" (click)="fullScreen()" [style.top]="2+ 'em'" [style.right]="'2.5' + 'em'" style="display: 'block'; position: 'absolute';"
-        [style.width]="fontSize-2 + 'em'" [style.height]="fontSize -2 + 'em'" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707z"/>
-        </svg>
+  <svg
+    class="text-light btn"
+    (click)="fullScreen()"
+    [style.top]="15 + 'px'"
+    [style.right]="10 + 'px'"
+    style="display: 'block'; position: 'absolute'"
+    [style.width]="fontSize + 'px'"
+    [style.height]="fontSize / 2 + 'px'"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="currentColor"
+    viewBox="0 0 16 16"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707zm4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707z"
+    />
+  </svg>
 
-        <div (click)="avanzarCambiarImagen()" class="btn" [style.top]="2 + 'em'" [style.right]="'8.95' + 'em'"  style="display: 'block'; position: 'absolute';">
-          <svg class="text-light" [style.font-size]="0.55 + 'em'"
-          [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-          </svg>
-        </div>
-
-        <div (click)="retrocederCambiarImagen()" class="btn" [style.top]="2+ 'em'" [style.right]="'16.95' + 'em'"  style="display: 'block'; position: 'absolute';">
-          <svg class="text-light" [style.font-size]="0.55 + 'em'"
-          [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-          </svg>
-        </div>
-
-      <svg  class="text-light btn" (click)="inicioCronometro()" [style.top]="fontSize+2 + 'em'" [style.right]="'14.5' + 'em'" style=" display: 'block'; position: 'absolute';"
-      [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+  <div
+    (click)="avanzarCambiarImagen()"
+    class="btn"
+    [style.top]="10 + 'px'"
+    [style.right]="fontSize + 'px'"
+    style="display: 'block'; position: 'absolute'"
+  >
+    <svg
+      class="text-light"
+      [style.font-size]="0.55 + 'px'"
+      [style.width]="fontSize / 2 + 'px'"
+      [style.height]="fontSize / 2 + 'px'"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+      />
     </svg>
-      <svg  class="text-light btn" (click)="detenerCronometro()" [style.top]="fontSize+2 + 'em'" [style.right]="'8.5' + 'em'" style=" display: 'block'; position: 'absolute';"
-      [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z" />
-      </svg>
-      <svg  class="text-light btn" (click)="reiniciarCronometro()" [style.top]="fontSize+2 + 'em'" [style.right]="'1.5' + 'em'" style=" display: 'block'; position: 'absolute';"
-      [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
-    </svg>
+  </div>
 
-    <svg  class="text-light btn" (click)="inicioCronometro2()" [style.top]="fontSize+9.7 + 'em'" [style.right]="'14.5' + 'em'" style=" display: 'block'; position: 'absolute';"
+  <div
+    (click)="retrocederCambiarImagen()"
+    class="btn"
+    [style.top]="10 + 'px'"
+    [style.right]="fontSize * 2 + 'px'"
+    style="display: 'block'; position: 'absolute'"
+  >
+    <svg
+      class="text-light"
+      [style.font-size]="0.55 + 'px'"
+      [style.width]="fontSize / 2 + 'px'"
+      [style.height]="fontSize / 2 + 'px'"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+      />
+    </svg>
+  </div>
+
+  <svg
+    class="text-light btn"
+    (click)="inicioCronometro()"
+    [style.top]="fontSize + 2 + 'px'"
+    [style.right]="fontSize * 2 + 'px'"
+    style="display: 'block'; position: 'absolute'"
+    [style.width]="fontSize + 'px'"
+    [style.height]="fontSize + 'px'"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+    />
+  </svg>
+  <svg
+    class="text-light btn"
+    (click)="detenerCronometro()"
+    [style.top]="fontSize + 2 + 'px'"
+    [style.right]="fontSize + 'px'"
+    style="display: 'block'; position: 'absolute'"
+    [style.width]="fontSize + 'px'"
+    [style.height]="fontSize + 'px'"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill-rule="evenodd"
+      d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"
+    />
+  </svg>
+  <svg
+    class="text-light btn"
+    (click)="reiniciarCronometro()"
+    [style.top]="fontSize + 2 + 'px'"
+    [style.right]="10 + 'px'"
+    style="display: 'block'; position: 'absolute'"
+    [style.width]="fontSize + 'px'"
+    [style.height]="fontSize + 'px'"
+    viewBox="0 0 16 16"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"
+    />
+  </svg>
+
+  <!-- <svg  class="text-light btn" (click)="inicioCronometro2()" [style.top]="fontSize+9.7 + 'em'" [style.right]="'14.5' + 'em'" style=" display: 'block'; position: 'absolute';"
     [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
   </svg>
@@ -49,9 +142,9 @@
     <svg  class="text-light btn" (click)="reiniciarCronometro2()" [style.top]="fontSize+9.7 + 'em'" [style.right]="'1.5' + 'em'" style=" display: 'block'; position: 'absolute';"
     [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
     <path d="M5 3.5h6A1.5 1.5 0 0 1 12.5 5v6a1.5 1.5 0 0 1-1.5 1.5H5A1.5 1.5 0 0 1 3.5 11V5A1.5 1.5 0 0 1 5 3.5z"/>
-  </svg>
+  </svg> -->
 
-    <!-- <div (click)="avanzarCambiarImagen()" class="btn" [style.top]="2*fontSize+3.7 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
+  <!-- <div (click)="avanzarCambiarImagen()" class="btn" [style.top]="2*fontSize+3.7 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
       <svg class="text-light" [style.font-size]="0.55 + 'em'"
       [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
@@ -64,7 +157,7 @@
       </svg>
     </div> -->
 
-    <!-- <div (click)="actualizarImagen()" class="btn" [style.top]="4*fontSize+2 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
+  <!-- <div (click)="actualizarImagen()" class="btn" [style.top]="4*fontSize+2 + 'em'" [style.right]="'2.95' + 'em'"  style="display: 'block'; position: 'absolute';">
       <svg class="text-light" [style.font-size]="0.55 + 'em'"
       [style.width]="fontSize + 'em'" [style.height]="fontSize + 'em'" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
@@ -72,19 +165,55 @@
       </svg>
     </div> -->
 
-    <div class="text-light" [style.font-size]="fontSize + 'em'" style="display: 'block'; position: 'absolute'; top: '0em'; left: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
-      {{cronometro.text}}
-    </div>
-
-    <div class="text-light" [style.font-size]="fontSize + 'em'" style="display: 'block'; position: 'absolute'; top: '1em'; left: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
-      {{cronometro2.text}}
-    </div>
-
-    <div class="text-light" [style.font-size]="fontSize + 'em'" style="display: 'block'; position: 'absolute'; bottom: '0em'; left: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
-      {{hora}}
-    </div>
-
-    <div class="text-light" [style.font-size]="fontSize/2 + 'em'" [style.right]="'0.75' + 'em'" style="display: 'block'; position: 'absolute'; bottom: '0.4em'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
-      {{indexImage + 1}}/{{imagenes.length}}
-    </div>
+  <div
+    class="text-light"
+    [style.font-size]="fontSize + 'px'"
+    [style.top]="'0' + 'px'"
+    [style.left]="'10' + 'px'"
+    style="
+      display: 'block';
+      position: 'absolute';
+      font-weight: 'bold';
+      text-shadow: '2px 2px #5c6e91';
+    "
+  >
+    {{ cronometro.text }}
   </div>
+
+  <!-- <div class="text-light" [style.font-size]="fontSize + 'em'" style="display: 'block'; position: 'absolute'; top: '1em'; left: '0'; font-weight: 'bold'; text-shadow: '2px 2px #5c6e91'">
+      {{cronometro2.text}}
+    </div> -->
+
+  <div
+    class="text-light"
+    [style.font-size]="fontSize + 'px'"
+    [style.bottom]="'10' + 'px'"
+    [style.left]="'10' + 'px'"
+    style="
+      display: 'block';
+      position: 'absolute';
+      font-weight: 'bold';
+      text-shadow: '2px 2px #5c6e91';
+    "
+  >
+    {{ hora }}
+  </div>
+
+  <div
+    class="text-light"
+    [style.font-size]="fontSize + 'px'"
+    [style.right]="'10' + 'px'"
+    [style.bottom]="'10' + 'px'"
+    style="
+      display: 'block';
+      position: 'absolute';
+      font-weight: 'bold';
+      text-shadow: '2px 2px #5c6e91';
+    "
+  >
+    {{ indexImage + 1 }}/{{ imagenes.length }}
+  </div>
+</div>
+
+<!-- [style.font-size]="fontSize / 2 + 'em'"
+[style.right]="'0.75' + 'em'" -->
